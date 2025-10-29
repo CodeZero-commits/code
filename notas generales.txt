@@ -1,0 +1,4 @@
+Cliente: 80
+Precio mensual de proyectos: 400
+Ganancias al mes 32,000
+Meta de clientes para este año: 20

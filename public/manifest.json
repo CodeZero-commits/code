@@ -1,0 +1,20 @@
+{
+  "name": "Code Zero – Portafolio",
+  "short_name": "CodeZero",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "/LogoCodeZero.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/LogoCodeZero.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

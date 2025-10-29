@@ -1,0 +1,101 @@
+//Sistema para SaaS
+-- ========================================
+-- TABLA: empresas
+-- Información de cada cliente/empresa
+-- ========================================
+CREATE TABLE empresas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    giro VARCHAR(255),
+    responsable VARCHAR(255),
+    email VARCHAR(255),
+    telefono VARCHAR(50),
+    usuario VARCHAR(100),
+    password VARCHAR(255),
+    fecha_inicio DATE,
+    fecha_fin DATE,
+    estado ENUM('activo','inactivo') DEFAULT 'inactivo',
+    proyecto VARCHAR(255),
+    notas TEXT,
+    creado_en DATETIME DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    nombre_completo VARCHAR(255),
+    nombre_empresa VARCHAR(255),
+    direccion VARCHAR(255),
+    rfc VARCHAR(50),
+    razon_social VARCHAR(255),
+    codigo_postal VARCHAR(20),
+    tipo_proyecto VARCHAR(100),
+    modalidad VARCHAR(50),
+    especialidades TEXT
+);
+
+-- ========================================
+-- TABLA: planes
+-- Define planes disponibles
+-- ========================================
+CREATE TABLE planes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    duracion_dias INT NOT NULL, -- duración en días (15, 30, 180, 365, etc.)
+    precio DECIMAL(10,2) NOT NULL,
+    creado_en DATETIME DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- ========================================
+-- TABLA: suscripciones
+-- Relaciona empresa con un plan
+-- ========================================
+CREATE TABLE suscripciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    empresa_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    estado ENUM('activo','inactivo') DEFAULT 'inactivo',
+    creado_en DATETIME DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (empresa_id) REFERENCES empresas(id) ON DELETE CASCADE,
+    FOREIGN KEY (plan_id) REFERENCES planes(id) ON DELETE CASCADE
+);
+
+-- ========================================
+-- TABLA: pagos
+-- Registra pagos realizados por la empresa
+-- ========================================
+CREATE TABLE pagos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    empresa_id INT NOT NULL,
+    suscripcion_id INT NOT NULL,
+    monto DECIMAL(10,2) NOT NULL,
+    fecha_pago DATETIME NOT NULL,
+    metodo_pago VARCHAR(50),
+    estado ENUM('pendiente','completado','cancelado') DEFAULT 'pendiente',
+    notas TEXT,
+    creado_en DATETIME DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (empresa_id) REFERENCES empresas(id) ON DELETE CASCADE,
+    FOREIGN KEY (suscripcion_id) REFERENCES suscripciones(id) ON DELETE CASCADE
+);
+
+-- ========================================
+-- TABLA: facturacion
+-- Preparada para facturar a las empresas
+-- ========================================
+CREATE TABLE facturacion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    empresa_id INT NOT NULL,
+    pago_id INT NOT NULL,
+    fecha_factura DATETIME NOT NULL,
+    monto DECIMAL(10,2) NOT NULL,
+    tipo_factura ENUM('CFDI','Recibo') DEFAULT 'CFDI',
+    status ENUM('pendiente','emitida','cancelada') DEFAULT 'pendiente',
+    archivo_pdf VARCHAR(255), -- ruta al PDF generado
+    creado_en DATETIME DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (empresa_id) REFERENCES empresas(id) ON DELETE CASCADE,
+    FOREIGN KEY (pago_id) REFERENCES pagos(id) ON DELETE CASCADE
+);
+EAFmgA2qZC1JYBPRPNC04AFbBqDIfAxr4YuZCKzG3FSHlSCFOWJ4mYxzVXhuEuSV1fe5Hh8WW4f6SY419mKMi6ZCR6q0GrSv3ZCAd3RVwu07B4iUMCgWcFbHRBoVdiJzKhiAEafcQgmxh38o4PecFTZCdtsfFZCkjk7SeogDlAT6CYrXnUcGxZApe8CfQnWhs6KZA2pydafBzSv3qzzbm6LzPbTZAlyWznmFsudSfLolVv0pTf6XwZD

@@ -1,0 +1,97 @@
+header {
+  width: 100%;
+  position: relative;
+}
+.rentangle {
+  display: block;
+  width: 100px;
+  height: 5px;
+  background-color: #ffffff;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.item-menu {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+}
+.nav {
+  display: none;
+  background: #000000b6;
+  width: 100%;
+  height: 90vh;
+  z-index: 10;
+}
+.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10vh;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+}
+.open ul li:hover {
+  color: #d6d5d5;
+}
+/*========================================================*/
+/*Main*/
+/*========================================================*/
+.main {
+  position: relative;
+}
+/*========================================================*/
+/*Nav Numbers*/
+/*========================================================*/
+.navNumbers {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+}
+
+.navNumbers ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+.navNumbers ul li {
+  list-style: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.item-Number:hover a {
+  color: #d6d5d5;
+}
+/*========================================================*/
+/*Hero*/
+/*========================================================*/
+.hero {
+  justify-content: center;
+  height: 88vh;
+  width: 100%;
+  overflow: hidden;
+}
+.heroImage {
+  height: 90vh;
+}
+/*========================================================*/
+/*About*/
+/*========================================================*/
+.about {
+  justify-content: center;
+  height: 88vh;
+  width: 100%;
+  overflow: hidden;
+}
+.imgHero {
+  height: 90vh;
+}
