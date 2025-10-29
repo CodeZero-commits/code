@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Search,
-  Plus,
-  Users,
-  Settings,
-  LogOut,
-  Moon,
-  Sun,
-} from "lucide-react";
+import { Search, Plus, Users, Settings, LogOut, Menu } from "lucide-react";
 import LogoCodezero from "./../../../assets/images/profile.jpg";
 
 function Header({
@@ -16,8 +8,8 @@ function Header({
   searchTerm,
   setSearchTerm,
   setShowModal,
-  theme,
-  toggleTheme,
+  isSidebarOpen,
+  onToggleSidebar,
 }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -133,43 +125,40 @@ function Header({
     );
   };
 
-  return (
-    <div className="surface-card theme-border shadow-soft px-6 py-4 flex items-center justify-between transition-colors duration-300">
-      <h2 className="text-2xl font-bold text-[var(--color-text)]">
-        {getSectionTitle()}
-      </h2>
+  const actionButton = getActionButton();
 
-      <div className="flex items-center gap-4">
-        <div className="relative">
+  return (
+    <div className="surface-card theme-border shadow-soft px-4 sm:px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between transition-colors duration-300">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onToggleSidebar}
+          className="lg:hidden theme-toggle w-10 h-10 flex items-center justify-center"
+          aria-label="Abrir o cerrar el menú lateral"
+          aria-expanded={isSidebarOpen}
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+        <h2 className="text-2xl font-bold text-[var(--color-text)]">
+          {getSectionTitle()}
+        </h2>
+      </div>
+
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-end md:flex-1">
+        <div className="relative w-full md:max-w-xs">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-text-muted)] w-4 h-4" />
           <input
             type="text"
             placeholder={getSearchPlaceholder()}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input pl-10 pr-4 py-2 rounded-lg focus:outline-none"
+            className="search-input w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none"
           />
         </div>
 
-        {getActionButton()}
+        {actionButton && <div className="md:w-auto">{actionButton}</div>}
 
-        {/* Theme toggle button. It updates the CSS variables defined in globals.css */}
-        <button
-          type="button"
-          onClick={toggleTheme}
-          className="theme-toggle w-10 h-10 rounded-full flex items-center justify-center"
-          aria-label={
-            theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"
-          }
-        >
-          {theme === "dark" ? (
-            <Sun className="w-5 h-5" />
-          ) : (
-            <Moon className="w-5 h-5" />
-          )}
-        </button>
-
-        <div className="relative">
+        <div className="relative self-end md:self-auto">
           <img
             src={LogoCodezero}
             alt="Perfil"

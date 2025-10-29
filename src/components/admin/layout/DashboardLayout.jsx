@@ -37,6 +37,7 @@ const DashboardLayout = () => {
       programming: "programming",
       social: "social",
       settings: "settings",
+      ajustes: "settings",
     };
     return sectionMap[path] || "dashboard";
   };
@@ -44,11 +45,13 @@ const DashboardLayout = () => {
   const [activeSection, setActiveSection] = useState(
     getActiveSectionFromPath(location.pathname)
   );
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Actualizar activeSection cuando cambia la ruta
   useEffect(() => {
     const newSection = getActiveSectionFromPath(location.pathname);
     setActiveSection(newSection);
+    setIsSidebarOpen(false);
   }, [location.pathname]);
 
   // El botón del header invierte el modo actual actualizando la preferencia.
@@ -56,35 +59,52 @@ const DashboardLayout = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
 
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen((prevState) => !prevState);
+  };
+
   return (
     <div
-      className="dashboard-theme flex min-h-screen transition-colors duration-300"
+      className="dashboard-theme min-h-screen transition-colors duration-300"
       data-theme={theme}
     >
-      <Sidebar
-        activeSection={activeSection}
-        setActiveSection={setActiveSection}
-      />
-      <div className="flex-1 flex flex-col">
-        <Header
-          activeSection={activeSection}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          setShowModal={setShowModal}
-          theme={theme}
-          toggleTheme={toggleTheme}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-[1px] z-30 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
         />
-        <main className="p-6 flex-1 background-muted transition-colors duration-300">
-          <Outlet
-            context={{
-              showModal,
-              setShowModal,
-              searchTerm,
-              setSearchTerm,
-              activeSection,
-            }}
+      )}
+      <div className="flex min-h-screen">
+        <Sidebar
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+        />
+        <div className="flex-1 flex flex-col min-w-0">
+          <Header
+            activeSection={activeSection}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            setShowModal={setShowModal}
+            isSidebarOpen={isSidebarOpen}
+            onToggleSidebar={handleToggleSidebar}
           />
-        </main>
+          <main className="p-4 sm:p-6 flex-1 background-muted transition-colors duration-300 min-w-0">
+            <Outlet
+              context={{
+                showModal,
+                setShowModal,
+                searchTerm,
+                setSearchTerm,
+                activeSection,
+                theme,
+                setTheme,
+                toggleTheme,
+              }}
+            />
+          </main>
+        </div>
       </div>
     </div>
   );

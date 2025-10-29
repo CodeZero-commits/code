@@ -1,40 +1,25 @@
 // components/Sidebar.jsx
 import { useNavigate } from "react-router-dom";
 
-import {
-  Users,
-  Briefcase,
-  FileText,
-  Settings,
-  Palette,
-  Code,
-  Share2,
-  LogOut,
-  UserCheck,
-  CreditCard,
-  Award,
-  Package,
-} from "lucide-react";
+import { Users, Briefcase, FileText, Palette, Code, Share2, UserCheck, Package } from "lucide-react";
 import LogoCodeZero from "./../../../assets/images/LogoCodeZero.png";
 
 const Sidebar = ({
   activeSection,
   setActiveSection,
-  LogoCode,
   onBackToPortfolio,
+  isOpen = false,
+  onClose,
 }) => {
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/");
-  };
 
   // Función para navegar y actualizar estado
   const handleNavigation = (section, route) => {
     setActiveSection(section);
     navigate(route);
+    if (onClose) {
+      onClose();
+    }
   };
 
   // Cada elemento de navegación adopta los colores definidos por las variables
@@ -58,7 +43,11 @@ const Sidebar = ({
   );
 
   return (
-    <div className="w-64 surface-card border-r theme-border h-full flex flex-col transition-colors duration-300">
+    <div
+      className={`surface-card border-r theme-border h-full flex flex-col transition-all duration-300 ease-in-out w-64 z-40 lg:static lg:translate-x-0 lg:shadow-none lg:h-auto ${
+        isOpen ? "translate-x-0 shadow-2xl fixed inset-y-0 left-0" : "-translate-x-full fixed inset-y-0 left-0"
+      } lg:flex`}
+    >
       {/* Logo */}
       <div
         className="p-6 border-b theme-border flex items-center gap-2 cursor-pointer transition-colors duration-300"
@@ -153,6 +142,15 @@ const Sidebar = ({
           />
         </div>
       </nav>
+      <div className="p-4 lg:hidden">
+        <button
+          type="button"
+          onClick={onClose}
+          className="w-full theme-toggle py-2 rounded-lg text-sm"
+        >
+          Cerrar menú
+        </button>
+      </div>
     </div>
   );
 };

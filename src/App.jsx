@@ -15,6 +15,7 @@ import Planes from "./pages/Planes"; // Esta es la única importación de Planes
 import Staff from "./components/admin/staff/StaffDashboard";
 import WhatsAppCRM from "./pages/WhatsAppCRM";
 import Configuracion from "./components/admin/config/Configuracion";
+import AjustesGenerales from "./pages/config/AjustesGenerales";
 import UXUI from "./pages/pendientes/UXUI";
 import Programming from "./pages/pendientes/Programming";
 import Social from "./pages/pendientes/Social";
@@ -47,6 +48,7 @@ function App() {
           <Route path="staff" element={<Staff />} />
           <Route path="whatsapp" element={<WhatsAppCRM />} />
           <Route path="settings" element={<Configuracion />} />
+          <Route path="settings/ajustes" element={<AjustesGenerales />} />
           <Route path="uxui" element={<UXUI />} />
           <Route path="programming" element={<Programming />} />
           <Route path="social" element={<Social />} />

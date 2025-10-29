@@ -21,27 +21,31 @@ const Configuracion = () => {
     {
       label: "Ajustes Generales",
       icon: Settings,
-      path: "/config/ajustes",
+      path: "/dashboard/settings/ajustes",
       description: "Configurar parámetros generales del sistema",
     },
   ];
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
         {buttons.map((btn) => {
           const Icon = btn.icon;
           return (
             <div
               key={btn.label}
               onClick={() => navigate(btn.path)}
-              className="cursor-pointer bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-start gap-4 hover:shadow-lg transition-shadow"
+              className="cursor-pointer surface-card theme-border rounded-xl p-6 flex flex-col items-start gap-4 hover:shadow-soft transition-shadow"
             >
-              <Icon className="w-8 h-8 text-blue-500" />
-              <h2 className="text-xl font-semibold text-gray-900">
+              <div className="p-3 rounded-lg bg-[var(--color-primary-muted)] text-[var(--color-primary-foreground)]">
+                <Icon className="w-6 h-6" />
+              </div>
+              <h2 className="text-xl font-semibold text-[var(--color-text)]">
                 {btn.label}
               </h2>
-              <p className="text-gray-500 text-sm">{btn.description}</p>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                {btn.description}
+              </p>
             </div>
           );
         })}
