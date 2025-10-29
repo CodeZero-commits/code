@@ -37,6 +37,8 @@ const Sidebar = ({
     navigate(route);
   };
 
+  // Cada elemento de navegación adopta los colores definidos por las variables
+  // CSS (ver globals.css) para responder al cambio de tema de forma automática.
   const NavItem = ({ icon, label, active, onClick, route }) => (
     <button
       onClick={() => {
@@ -46,10 +48,8 @@ const Sidebar = ({
           onClick();
         }
       }}
-      className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
-        active
-          ? "bg-blue-50 text-blue-700 border border-blue-200"
-          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+      className={`nav-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
+        active ? "nav-item-active" : ""
       }`}
     >
       {icon}
@@ -58,10 +58,10 @@ const Sidebar = ({
   );
 
   return (
-    <div className="w-64 bg-white border-r border-gray-200 h-full flex flex-col">
+    <div className="w-64 surface-card border-r theme-border h-full flex flex-col transition-colors duration-300">
       {/* Logo */}
       <div
-        className="p-6 border-b border-gray-200 flex  items-center gap-2 cursor-pointer"
+        className="p-6 border-b theme-border flex items-center gap-2 cursor-pointer transition-colors duration-300"
         onClick={onBackToPortfolio}
       >
         <img
@@ -70,12 +70,12 @@ const Sidebar = ({
           className="w-12 h-12 object-contain" // evita que se estire
         />
 
-        <h1 className="text-2xl font-bold text-gray-900">Code Zero</h1>
+        <h1 className="text-2xl font-bold text-[var(--color-text)]">Code Zero</h1>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 p-4 space-y-2">
-        <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
+        <p className="nav-section-label text-xs font-medium uppercase tracking-wide mb-2">
           CRM Profesional
         </p>
         <NavItem
@@ -118,13 +118,13 @@ const Sidebar = ({
         <NavItem
           icon={<Package className="w-5 h-5" />}
           label="Usuarios"
-          active={activeSection === "plans"}
+          active={activeSection === "users"}
           route="/dashboard/users"
         />
 
         {/* Áreas de Trabajo */}
         <div className="pt-4">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide mb-2">
+          <p className="nav-section-label text-xs font-medium uppercase tracking-wide mb-2">
             Áreas de Trabajo
           </p>
           <NavItem

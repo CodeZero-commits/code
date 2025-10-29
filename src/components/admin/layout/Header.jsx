@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Plus, Users, Settings, LogOut } from "lucide-react";
+import {
+  Search,
+  Plus,
+  Users,
+  Settings,
+  LogOut,
+  Moon,
+  Sun,
+} from "lucide-react";
 import LogoCodezero from "./../../../assets/images/profile.jpg";
 
-function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
+function Header({
+  activeSection,
+  searchTerm,
+  setSearchTerm,
+  setShowModal,
+  theme,
+  toggleTheme,
+}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -111,7 +126,7 @@ function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
     return (
       <button
         onClick={() => setShowModal(config.modal)}
-        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        className="btn-primary flex items-center gap-2 px-4 py-2 rounded-lg"
       >
         <Plus className="w-4 h-4" /> {config.text}
       </button>
@@ -119,22 +134,40 @@ function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
   };
 
   return (
-    <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-      <h2 className="text-2xl font-bold text-gray-900">{getSectionTitle()}</h2>
+    <div className="surface-card theme-border shadow-soft px-6 py-4 flex items-center justify-between transition-colors duration-300">
+      <h2 className="text-2xl font-bold text-[var(--color-text)]">
+        {getSectionTitle()}
+      </h2>
 
       <div className="flex items-center gap-4">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-text-muted)] w-4 h-4" />
           <input
             type="text"
             placeholder={getSearchPlaceholder()}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="search-input pl-10 pr-4 py-2 rounded-lg focus:outline-none"
           />
         </div>
 
         {getActionButton()}
+
+        {/* Theme toggle button. It updates the CSS variables defined in globals.css */}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="theme-toggle w-10 h-10 rounded-full flex items-center justify-center"
+          aria-label={
+            theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"
+          }
+        >
+          {theme === "dark" ? (
+            <Sun className="w-5 h-5" />
+          ) : (
+            <Moon className="w-5 h-5" />
+          )}
+        </button>
 
         <div className="relative">
           <img
@@ -144,22 +177,22 @@ function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
             onClick={toggleDropdown}
           />
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+            <div className="dropdown-panel absolute right-0 mt-2 w-48 rounded-lg z-50">
               <button
                 onClick={() => handleDropdownClick("staff")}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2"
+                className="dropdown-item w-full text-left px-4 py-2 flex items-center gap-2"
               >
                 <Users className="w-4 h-4" /> Staff
               </button>
               <button
                 onClick={() => handleDropdownClick("settings")}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2"
+                className="dropdown-item w-full text-left px-4 py-2 flex items-center gap-2"
               >
                 <Settings className="w-4 h-4" /> Configuración
               </button>
               <button
                 onClick={() => handleDropdownClick("logout")}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-red-600"
+                className="dropdown-item danger w-full text-left px-4 py-2 flex items-center gap-2"
               >
                 <LogOut className="w-4 h-4" /> Cerrar sesión
               </button>
