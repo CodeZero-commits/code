@@ -21,6 +21,11 @@ import Programming from "./pages/pendientes/Programming";
 import Social from "./pages/pendientes/Social";
 import Roles from "./pages/Roles";
 import Usuarios from "./pages/usuarios";
+import ContentDashboard from "./pages/content/ContentDashboard";
+import ContentHome from "./pages/content/ContentHome";
+import ContentProjects from "./pages/content/ContentProjects";
+import ContentArticles from "./pages/content/ContentArticles";
+import ContentPackages from "./pages/content/ContentPackages";
 
 function App() {
   return (
@@ -54,6 +59,11 @@ function App() {
           <Route path="social" element={<Social />} />
           <Route path="roles" element={<Roles />} />
           <Route path="users" element={<Usuarios />} />
+          <Route path="content" element={<ContentDashboard />} />
+          <Route path="content/home" element={<ContentHome />} />
+          <Route path="content/projects" element={<ContentProjects />} />
+          <Route path="content/articles" element={<ContentArticles />} />
+          <Route path="content/packages" element={<ContentPackages />} />
         </Route>
       </Routes>
     </Router>
