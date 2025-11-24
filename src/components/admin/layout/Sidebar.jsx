@@ -1,7 +1,19 @@
 // components/Sidebar.jsx
 import { useNavigate } from "react-router-dom";
 
-import { Users, Briefcase, FileText, Palette, Code, Share2, UserCheck, Package } from "lucide-react";
+import {
+  Users,
+  Briefcase,
+  FileText,
+  Palette,
+  Code,
+  Share2,
+  UserCheck,
+  Package,
+  Home,
+  Layers,
+  Sparkles,
+} from "lucide-react";
 import LogoCodeZero from "./../../../assets/images/LogoCodeZero.png";
 
 const Sidebar = ({
@@ -13,22 +25,19 @@ const Sidebar = ({
 }) => {
   const navigate = useNavigate();
 
-  // Función para navegar y actualizar estado
   const handleNavigation = (section, route) => {
     setActiveSection(section);
     navigate(route);
-    if (onClose) {
-      onClose();
-    }
+    if (onClose) onClose();
   };
 
   // Cada elemento de navegación adopta los colores definidos por las variables
   // CSS (ver globals.css) para responder al cambio de tema de forma automática.
-  const NavItem = ({ icon, label, active, onClick, route }) => (
+  const NavItem = ({ icon, label, active, onClick, route, sectionKey }) => (
     <button
       onClick={() => {
         if (route) {
-          handleNavigation(label.toLowerCase().replace(/\s+/g, ""), route);
+          handleNavigation(sectionKey || label.toLowerCase().replace(/\s+/g, ""), route);
         } else if (onClick) {
           onClick();
         }
@@ -64,11 +73,11 @@ const Sidebar = ({
 
       {/* Navigation */}
       <nav className="flex-1 p-4 space-y-2">
-        <p className="nav-section-label text-xs font-medium uppercase tracking-wide mb-2">
-          CRM Profesional
-        </p>
-        <NavItem
-          icon={<Briefcase className="w-5 h-5" />}
+      <p className="nav-section-label text-xs font-medium uppercase tracking-wide mb-2">
+        CRM Profesional
+      </p>
+      <NavItem
+        icon={<Briefcase className="w-5 h-5" />}
           label="Dashboard"
           active={activeSection === "dashboard"}
           route="/dashboard"
@@ -105,11 +114,45 @@ const Sidebar = ({
           route="/dashboard/plans"
         />
         <NavItem
-          icon={<Package className="w-5 h-5" />}
-          label="Usuarios"
-          active={activeSection === "users"}
-          route="/dashboard/users"
-        />
+        icon={<Package className="w-5 h-5" />}
+        label="Usuarios"
+        active={activeSection === "users"}
+        route="/dashboard/users"
+      />
+
+        <div className="pt-4">
+          <p className="nav-section-label text-xs font-medium uppercase tracking-wide mb-2">
+            Gestor de Contenido
+          </p>
+          <NavItem
+            icon={<Home className="w-5 h-5" />}
+            label="Home"
+            sectionKey="content-home"
+            active={activeSection === "content-home"}
+            route="/dashboard/content/home"
+          />
+          <NavItem
+            icon={<Sparkles className="w-5 h-5" />}
+            label="Proyectos CMS"
+            sectionKey="content-projects"
+            active={activeSection === "content-projects"}
+            route="/dashboard/content/projects"
+          />
+          <NavItem
+            icon={<FileText className="w-5 h-5" />}
+            label="Artículos"
+            sectionKey="content-articles"
+            active={activeSection === "content-articles"}
+            route="/dashboard/content/articles"
+          />
+          <NavItem
+            icon={<Layers className="w-5 h-5" />}
+            label="Paquetes"
+            sectionKey="content-packages"
+            active={activeSection === "content-packages"}
+            route="/dashboard/content/packages"
+          />
+        </div>
 
         {/* Áreas de Trabajo */}
         <div className="pt-4">

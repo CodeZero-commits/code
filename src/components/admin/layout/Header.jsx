@@ -46,6 +46,10 @@ function Header({
       clients: "Clientes",
       users: "Usuarios", // 👈 agregado
       projects: "Proyectos",
+      "content-home": "Home (CMS)",
+      "content-projects": "Proyectos (CMS)",
+      "content-articles": "Artículos (CMS)",
+      "content-packages": "Paquetes (CMS)",
       subscriptions: "Suscripciones",
       roles: "Roles",
       uxui: "UX/UI Design",
@@ -73,6 +77,14 @@ function Header({
         return "Buscar roles...";
       case "plans":
         return "Buscar planes...";
+      case "content-home":
+        return "Buscar bloques...";
+      case "content-projects":
+        return "Buscar proyectos del CMS...";
+      case "content-articles":
+        return "Buscar artículos...";
+      case "content-packages":
+        return "Buscar paquetes...";
       default:
         return "Buscar...";
     }
@@ -108,6 +120,18 @@ function Header({
       plans: {
         text: "Agregar Plan",
         modal: "plans",
+      },
+      "content-projects": {
+        text: "Nuevo Proyecto",
+        modal: "content-projects",
+      },
+      "content-articles": {
+        text: "Nuevo Artículo",
+        modal: "content-articles",
+      },
+      "content-packages": {
+        text: "Nuevo Paquete",
+        modal: "content-packages",
       },
     };
 
