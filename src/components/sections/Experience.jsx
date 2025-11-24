@@ -166,7 +166,6 @@ const Experience = () => {
       id="experience"
       className="py-20 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden"
     >
-      {/* Efectos de fondo */}
       <div className="absolute inset-0">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-600/5 rounded-full blur-3xl"></div>
@@ -182,7 +181,6 @@ const Experience = () => {
           </p>
         </div>
 
-        {/* Navegación de tabs */}
         <div className="flex justify-center mb-12">
           <div className="glass p-2 rounded-full">
             <div className="flex space-x-1">
@@ -204,38 +202,36 @@ const Experience = () => {
           </div>
         </div>
 
-        {/* Contenido de experiencia laboral */}
         {activeTab === "work" && (
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Línea de tiempo */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 to-pink-600"></div>
-
               <div className="space-y-12">
-                {workExperience.map((job, index) => (
+                {workExperience.map((job) => (
                   <div
                     key={job.id}
                     className="relative flex items-start space-x-8"
                   >
-                    {/* Punto en la línea de tiempo */}
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
-                        <img
-                          src={job.companyLogo}
-                          alt={job.company}
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Contenido */}
                     <div className="flex-1 glass p-8 rounded-2xl hover-lift">
+                      {/* HEADER MODIFICADO */}
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                         <div>
                           <h3 className="text-2xl font-bold text-white mb-2">
                             {job.position}
                           </h3>
-                          <div className="flex items-center space-x-4 text-gray-300 mb-2">
+
+                          {/* TECNOLOGÍAS AQUÍ */}
+                          <div className="flex flex-wrap gap-2 mb-2">
+                            {job.technologies.map((tech, index) => (
+                              <span
+                                key={index}
+                                className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex items-center space-x-4 text-gray-300">
                             <a
                               href={job.companyUrl}
                               className="flex items-center space-x-2 hover:text-purple-400 transition-colors"
@@ -247,6 +243,7 @@ const Experience = () => {
                             </a>
                           </div>
                         </div>
+
                         <div className="flex flex-col lg:items-end text-sm text-gray-400">
                           <div className="flex items-center space-x-2">
                             <Calendar className="w-4 h-4" />
@@ -266,31 +263,16 @@ const Experience = () => {
                           Logros destacados:
                         </h4>
                         <ul className="space-y-2">
-                          {job.achievements.map(
-                            (achievement, achievementIndex) => (
-                              <li
-                                key={achievementIndex}
-                                className="flex items-start space-x-2"
-                              >
-                                <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-300">
-                                  {achievement}
-                                </span>
-                              </li>
-                            )
-                          )}
+                          {job.achievements.map((ach, index) => (
+                            <li
+                              key={index}
+                              className="flex items-start space-x-2"
+                            >
+                              <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-300">{ach}</span>
+                            </li>
+                          ))}
                         </ul>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {job.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm"
-                          >
-                            {tech}
-                          </span>
-                        ))}
                       </div>
                     </div>
                   </div>
@@ -300,22 +282,12 @@ const Experience = () => {
           </div>
         )}
 
-        {/* Contenido de educación */}
         {activeTab === "education" && (
           <div className="max-w-4xl mx-auto">
             <div className="grid gap-8">
-              {education.map((edu, index) => (
+              {education.map((edu) => (
                 <div key={edu.id} className="glass p-8 rounded-2xl hover-lift">
                   <div className="flex items-start space-x-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-                        <img
-                          src={edu.logo}
-                          alt={edu.institution}
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
-                      </div>
-                    </div>
                     <div className="flex-1">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                         <div>
@@ -326,6 +298,7 @@ const Experience = () => {
                             {edu.institution}
                           </h4>
                         </div>
+
                         <div className="flex flex-col lg:items-end text-sm text-gray-400">
                           <div className="flex items-center space-x-2">
                             <Calendar className="w-4 h-4" />
@@ -339,24 +312,6 @@ const Experience = () => {
                       </div>
 
                       <p className="text-gray-300 mb-6">{edu.description}</p>
-
-                      <div>
-                        <ul className="space-y-2">
-                          {edu.achievements.map(
-                            (achievement, achievementIndex) => (
-                              <li
-                                key={achievementIndex}
-                                className="flex items-start space-x-2"
-                              >
-                                <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-300">
-                                  {achievement}
-                                </span>
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -365,23 +320,15 @@ const Experience = () => {
           </div>
         )}
 
-        {/* Contenido de certificaciones */}
         {activeTab === "certifications" && (
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
-              {certifications.map((cert, index) => (
+              {certifications.map((cert) => (
                 <div
                   key={cert.id}
                   className="glass p-6 rounded-2xl hover-lift group"
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0">
-                      <img
-                        src={cert.logo}
-                        alt={cert.issuer}
-                        className="w-12 h-12 rounded-lg object-cover"
-                      />
-                    </div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">
                         {cert.name}
@@ -409,7 +356,6 @@ const Experience = () => {
           </div>
         )}
 
-        {/* Estadísticas */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           <div className="glass p-6 rounded-xl text-center hover-lift">
             <div className="text-3xl font-bold gradient-text mb-2">3+</div>
@@ -429,7 +375,6 @@ const Experience = () => {
           </div>
         </div>
 
-        {/* Call to action */}
         <div className="text-center mt-16">
           <div className="glass p-8 rounded-2xl max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4">
@@ -439,6 +384,7 @@ const Experience = () => {
               Descarga mi CV completo o conectemos para hablar sobre
               oportunidades de colaboración.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={IsraelGonzálezCV}
