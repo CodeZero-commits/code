@@ -1,0 +1,37 @@
+# .htaccess para /api/
+
+# Habilitar reescritura de URLs
+RewriteEngine On
+
+# Permitir todos los métodos HTTP
+<Limit GET POST PUT DELETE OPTIONS>
+    Allow from all
+</Limit>
+
+# Headers CORS para todos los archivos de la API
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+Header always set Access-Control-Max-Age "86400"
+
+# Manejar preflight OPTIONS requests
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+# Asegurar que los archivos PHP se ejecuten correctamente
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Prevenir acceso directo a archivos de configuración
+<Files "config.php">
+    Require all denied
+</Files>
+
+<Files "utils.php">
+    Require all denied
+</Files>
+
+# Log de errores (opcional)
+php_flag log_errors On
+php_value error_log "/home/u449516874/domains/codezerohub.net/public_html/api/error.log"
