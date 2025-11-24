@@ -1,46 +1,46 @@
 import React from "react";
 import { ExternalLink, Beaker } from "lucide-react";
+import Codepen001 from "./../../assets/images/NISOZ-CODE-ZERO.png";
+import Codepen002 from "./../../assets/images/LIMOS-CODE-ZERO.png";
+import Codepen003 from "./../../assets/images/CARRIDE-CODE-ZERO.PNG";
+import Codepen004 from "./../../assets/images/RRW-CODE-ZERO.PNG";
 
 const codepenProjects = [
   {
     id: 1,
-    title: "Neon Microinteractions Lab",
+    title: "NISOZ AGENCY",
     description:
-      "Exploración de microinteracciones y glassmorphism usando solo CSS y un toque de JavaScript para detonar animaciones contextuales.",
+      "Diseño de langing page para agencia creativa, enfocada en UX/UI moderno con animaciones sutiles y tipografía audaz.",
     focus: "Experimento UI",
-    image:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80",
-    penUrl: "https://codepen.io/israelgonzalez/pen/neon-microinteractions",
+    image: Codepen001,
+    penUrl: "https://codepen.io/CodeZero-commits/pen/yyeKGpr",
   },
   {
     id: 2,
-    title: "Responsive Layout Playground",
+    title: "LIMOS",
     description:
-      "Sistema de cuadrículas fluidas creado para enseñar principios de diseño responsivo y layout adaptativo en proyectos reales.",
-    focus: "Educativo",
-    image:
-      "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80",
-    penUrl: "https://codepen.io/israelgonzalez/pen/layout-playground",
+      "Servicio de transporte premium. Diseño de interfaz elegante con énfasis en experiencia de usuario fluida y reservas rápidas.",
+    focus: "Experimento UI",
+    image: Codepen002,
+    penUrl: "https://codepen.io/CodeZero-commits/pen/Byjrpoz",
   },
   {
     id: 3,
-    title: "Dark Mode Dashboard Kit",
+    title: "CarRide",
     description:
-      "Concepto experimental para panel de analíticas con componentes modulares y variables CSS para teming claro/oscuro instantáneo.",
-    focus: "Concepto",
-    image:
-      "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
-    penUrl: "https://codepen.io/israelgonzalez/pen/dashboard-kit",
+      "Plataforma moderna de renta y compra de autos. Diseño limpio con navegación intuitiva y enfoque en visualización de vehículos.",
+    focus: "Experimento UI",
+    image: Codepen003,
+    penUrl: "https://codepen.io/CodeZero-commits/pen/EaPENML",
   },
   {
     id: 4,
-    title: "Motion Typography Stories",
+    title: "rRw",
     description:
-      "Colección de historias animadas basadas en tipografía cinética, ideal para experimentar con timelines en CSS y GSAP.",
-    focus: "Inspiración",
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
-    penUrl: "https://codepen.io/israelgonzalez/pen/motion-typography",
+      "Renta de vehículos recreativos. Diseño vibrante y amigable con énfasis en imágenes atractivas y proceso de reserva sencillo.",
+    focus: "Experimento UI",
+    image: Codepen004,
+    penUrl: "https://codepen.io/CodeZero-commits/pen/Wbrzore",
   },
 ];
 
@@ -65,7 +65,10 @@ const CodePenProjects = () => {
             Proyectos <span className="gradient-text">CodePen</span>
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            Una colección de experimentos, conceptos UI y pequeños descubrimientos técnicos. No son proyectos comerciales, sino espacios donde documento mi proceso creativo para que otros desarrolladores aprendan o encuentren inspiración.
+            Una colección de experimentos, conceptos UI y pequeños
+            descubrimientos técnicos. No son proyectos comerciales, sino
+            espacios donde documento mi proceso creativo para que otros
+            desarrolladores aprendan o encuentren inspiración.
           </p>
         </div>
 

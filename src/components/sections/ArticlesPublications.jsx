@@ -1,23 +1,24 @@
 import React from "react";
 import { BookOpen, ExternalLink } from "lucide-react";
+import Codepen001 from "./../../assets/images/AtomicDesign-Code-Zero.png";
+import Codepen002 from "./../../assets/images/Microinteracciones-que-enamoran-code-zero.png";
+import Codepen003 from "./../../assets/images/Estrategias-para-documentar-proyectos-educativos-Code-Zero.png";
 
 const articles = [
   {
     id: 1,
-    title: "Diseñando sistemas de componentes accesibles",
+    title: "Entender Atomic Design cambió mi vida",
     description:
-      "Una guía práctica para crear sistemas de diseño inclusivos desde la ideación hasta la implementación en React.",
-    image:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
-    url: "https://medium.com/@israelgonzalez/disenando-sistemas-accesibles",
+      "Este artículo explora cómo la metodología Atomic Design, creada por Brad Frost, transformó por completo mi forma de diseñar interfaces.",
+    image: Codepen001,
+    url: "https://medium.com/@codexzero.tech/entender-atomic-design-cambió-mi-vida-b62df1a807db",
   },
   {
     id: 2,
     title: "Microinteracciones que enamoran",
     description:
-      "Cómo uso prototipos rápidos en CodePen para validar animaciones y sensaciones antes de integrarlas a producción.",
-    image:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80",
+      "En este artículo exploro cómo las microinteracciones —esos pequeños detalles que muchos pasan por alto— pueden marcar la diferencia entre una interfaz funcional y una experiencia memorable.",
+    image: Codepen002,
     url: "https://dev.to/israelgonzalez/microinteracciones-que-enamoran",
   },
   {
@@ -25,9 +26,8 @@ const articles = [
     title: "Estrategias para documentar proyectos educativos",
     description:
       "Buenas prácticas que sigo para convertir experimentos en recursos de aprendizaje reutilizables para la comunidad.",
-    image:
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80",
-    url: "https://hashnode.com/post/estrategias-documentacion-proyectos",
+    image: Codepen003,
+    url: "https://medium.com/@codexzero.tech/estrategias-para-documentar-proyectos-educativos-1de0d0a4bf9e",
   },
 ];
 
@@ -52,7 +52,8 @@ const ArticlesPublications = () => {
             Artículos y <span className="gradient-text">Publicaciones</span>
           </h2>
           <p className="mt-4 text-lg text-gray-300">
-            Documentos y reflexiones donde comparto aprendizajes, procesos y metodologías que nacen de mis proyectos experimentales.
+            Documentos y reflexiones donde comparto aprendizajes, procesos y
+            metodologías que nacen de mis proyectos experimentales.
           </p>
         </div>
 

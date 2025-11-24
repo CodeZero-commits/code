@@ -190,14 +190,14 @@ const Experience = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
+                  className={`timeline-item flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
                     activeTab === tab.id
                       ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
                       : "text-gray-300 hover:text-white"
                   }`}
                 >
                   <tab.icon className="w-5 h-5" />
-                  <span>{tab.label}</span>
+                  <span className="hidden sm:inline">{tab.label}</span>
                 </button>
               ))}
             </div>
@@ -207,18 +207,18 @@ const Experience = () => {
         {/* Contenido de experiencia laboral */}
         {activeTab === "work" && (
           <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Línea de tiempo */}
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 to-pink-600"></div>
+            <div className="relative md:pl-16">
+              {/* Línea de tiempo (solo visible en desktop) */}
+              <div className="timeline-line hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-600 to-pink-600"></div>
 
               <div className="space-y-12">
-                {workExperience.map((job, index) => (
+                {workExperience.map((job) => (
                   <div
                     key={job.id}
-                    className="relative flex items-start space-x-8"
+                    className="timeline-item relative flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left"
                   >
-                    {/* Punto en la línea de tiempo */}
-                    <div className="relative z-10 flex-shrink-0">
+                    {/* Logo */}
+                    <div className="logo-wrap relative z-10 flex-shrink-0 mb-4 md:mb-0">
                       <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
                         <img
                           src={job.companyLogo}
@@ -228,14 +228,14 @@ const Experience = () => {
                       </div>
                     </div>
 
-                    {/* Contenido */}
-                    <div className="flex-1 glass p-8 rounded-2xl hover-lift">
+                    {/* Card */}
+                    <div className="timeline-card flex-1 glass p-8 rounded-2xl hover-lift">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                         <div>
                           <h3 className="text-2xl font-bold text-white mb-2">
                             {job.position}
                           </h3>
-                          <div className="flex items-center space-x-4 text-gray-300 mb-2">
+                          <div className="flex items-center justify-center md:justify-start space-x-4 text-gray-300 mb-2">
                             <a
                               href={job.companyUrl}
                               className="flex items-center space-x-2 hover:text-purple-400 transition-colors"
@@ -247,12 +247,13 @@ const Experience = () => {
                             </a>
                           </div>
                         </div>
-                        <div className="flex flex-col lg:items-end text-sm text-gray-400">
-                          <div className="flex items-center space-x-2">
+
+                        <div className="flex flex-col lg:items-end text-sm text-gray-400 mt-2 lg:mt-0">
+                          <div className="flex items-center justify-center md:justify-start space-x-2">
                             <Calendar className="w-4 h-4" />
                             <span>{job.period}</span>
                           </div>
-                          <div className="flex items-center space-x-2 mt-1">
+                          <div className="flex items-center justify-center md:justify-start space-x-2 mt-1">
                             <MapPin className="w-4 h-4" />
                             <span>{job.location}</span>
                           </div>
@@ -266,23 +267,21 @@ const Experience = () => {
                           Logros destacados:
                         </h4>
                         <ul className="space-y-2">
-                          {job.achievements.map(
-                            (achievement, achievementIndex) => (
-                              <li
-                                key={achievementIndex}
-                                className="flex items-start space-x-2"
-                              >
-                                <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-300">
-                                  {achievement}
-                                </span>
-                              </li>
-                            )
-                          )}
+                          {job.achievements.map((achievement, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start justify-center md:justify-start space-x-2"
+                            >
+                              <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-300">
+                                {achievement}
+                              </span>
+                            </li>
+                          ))}
                         </ul>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap justify-center md:justify-start gap-2">
                         {job.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
@@ -303,11 +302,18 @@ const Experience = () => {
         {/* Contenido de educación */}
         {activeTab === "education" && (
           <div className="max-w-4xl mx-auto">
-            <div className="grid gap-8">
-              {education.map((edu, index) => (
-                <div key={edu.id} className="glass p-8 rounded-2xl hover-lift">
-                  <div className="flex items-start space-x-6">
-                    <div className="flex-shrink-0">
+            <div className="relative md:pl-16">
+              {/* Línea de tiempo (solo visible en desktop) */}
+              <div className="timeline-line hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 to-purple-600"></div>
+
+              <div className="space-y-12">
+                {education.map((edu) => (
+                  <div
+                    key={edu.id}
+                    className="timeline-item relative flex flex-col md:flex-row items-center md:items-start md:space-x-8 text-center md:text-left"
+                  >
+                    {/* Logo */}
+                    <div className="logo-wrap relative z-10 flex-shrink-0 mb-4 md:mb-0">
                       <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
                         <img
                           src={edu.logo}
@@ -316,7 +322,9 @@ const Experience = () => {
                         />
                       </div>
                     </div>
-                    <div className="flex-1">
+
+                    {/* Card */}
+                    <div className="timeline-card flex-1 glass p-8 rounded-2xl hover-lift">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                         <div>
                           <h3 className="text-2xl font-bold text-white mb-2">
@@ -326,12 +334,12 @@ const Experience = () => {
                             {edu.institution}
                           </h4>
                         </div>
-                        <div className="flex flex-col lg:items-end text-sm text-gray-400">
-                          <div className="flex items-center space-x-2">
+                        <div className="flex flex-col lg:items-end text-sm text-gray-400 mt-2 lg:mt-0">
+                          <div className="flex items-center justify-center md:justify-start space-x-2">
                             <Calendar className="w-4 h-4" />
                             <span>{edu.period}</span>
                           </div>
-                          <div className="flex items-center space-x-2 mt-1">
+                          <div className="flex items-center justify-center md:justify-start space-x-2 mt-1">
                             <MapPin className="w-4 h-4" />
                             <span>{edu.location}</span>
                           </div>
@@ -340,27 +348,30 @@ const Experience = () => {
 
                       <p className="text-gray-300 mb-6">{edu.description}</p>
 
-                      <div>
-                        <ul className="space-y-2">
-                          {edu.achievements.map(
-                            (achievement, achievementIndex) => (
+                      {edu.achievements.length > 0 && (
+                        <div>
+                          <h4 className="text-lg font-semibold text-white mb-3">
+                            Logros:
+                          </h4>
+                          <ul className="space-y-2">
+                            {edu.achievements.map((achievement, i) => (
                               <li
-                                key={achievementIndex}
-                                className="flex items-start space-x-2"
+                                key={i}
+                                className="flex items-start justify-center md:justify-start space-x-2"
                               >
                                 <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-2 flex-shrink-0"></div>
                                 <span className="text-gray-300">
                                   {achievement}
                                 </span>
                               </li>
-                            )
-                          )}
-                        </ul>
-                      </div>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -372,7 +383,7 @@ const Experience = () => {
               {certifications.map((cert, index) => (
                 <div
                   key={cert.id}
-                  className="glass p-6 rounded-2xl hover-lift group"
+                  className="timeline-item glass p-6 rounded-2xl hover-lift group"
                 >
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">

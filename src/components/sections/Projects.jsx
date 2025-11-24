@@ -303,14 +303,13 @@ const Projects = () => {
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
-              className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
+              className={`flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
                 activeFilter === filter.id
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg scale-105"
+                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg scale-110"
                   : "glass text-gray-300 hover:text-white hover:scale-105"
               }`}
             >
-              <filter.icon className="w-5 h-5" />
-              <span>{filter.label}</span>
+              <filter.icon className="w-6 h-6" />
             </button>
           ))}
         </div>

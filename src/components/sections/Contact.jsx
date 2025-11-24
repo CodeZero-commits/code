@@ -35,24 +35,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envío del formulario
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        budget: "",
-        timeline: "",
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append(
+        "access_key",
+        "08dd17a4-2045-4dde-8432-506069211166"
+      ); // tu key real
+
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value);
       });
 
-      // Resetear después de 3 segundos
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 3000);
-    }, 2000);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          budget: "",
+          timeline: "",
+        });
+      } else {
+        alert("❌ Error al enviar el formulario. Intenta nuevamente.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ Error de conexión. Intenta de nuevo más tarde.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -66,7 +85,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Teléfono",
-      value: "+52 618 448 0821",
+      value: "+52 618 476 4306",
       description: "Lunes a Viernes, 9AM - 6PM",
       link: "https://wa.link/qyg94v",
     },

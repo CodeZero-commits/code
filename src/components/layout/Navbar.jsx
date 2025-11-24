@@ -89,7 +89,7 @@ const Navbar = () => {
       {/* Mobile Menu (animado) */}
       <div
         className={`md:hidden bg-gray-900 overflow-hidden transition-all duration-500 ${
-          isOpen ? "max-h-96 opacity-100 py-4" : "max-h-0 opacity-0 py-0"
+          isOpen ? "max-h-[600px] opacity-100 py-4" : "max-h-0 opacity-0 py-0"
         }`}
       >
         <div className="px-6 space-y-4">

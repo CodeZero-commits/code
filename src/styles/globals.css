@@ -102,3 +102,26 @@ html {
   border-radius: 50%;
   animation: float 8s ease-in-out infinite;
 }
+@media (max-width: 768px) {
+  /* Ocultar la línea vertical */
+  .timeline-line {
+    display: none;
+  }
+
+  /* Centrar los íconos (logos) */
+  .timeline-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-item .logo-wrap {
+    margin-bottom: 1rem;
+  }
+
+  /* Ajuste visual para las cards */
+  .timeline-card {
+    padding: 1.5rem;
+    width: 100%;
+  }
+}
