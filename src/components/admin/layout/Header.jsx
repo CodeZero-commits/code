@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Plus, Users, Settings, LogOut } from "lucide-react";
+import { Search, Plus, Users, Settings, LogOut, Menu } from "lucide-react";
 import LogoCodezero from "./../../../assets/images/profile.jpg";
 
-function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
+function Header({
+  activeSection,
+  searchTerm,
+  setSearchTerm,
+  setShowModal,
+  isSidebarOpen,
+  onToggleSidebar,
+}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -111,32 +118,47 @@ function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
     return (
       <button
         onClick={() => setShowModal(config.modal)}
-        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        className="btn-primary flex items-center gap-2 px-4 py-2 rounded-lg"
       >
         <Plus className="w-4 h-4" /> {config.text}
       </button>
     );
   };
 
-  return (
-    <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-      <h2 className="text-2xl font-bold text-gray-900">{getSectionTitle()}</h2>
+  const actionButton = getActionButton();
 
-      <div className="flex items-center gap-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+  return (
+    <div className="surface-card theme-border shadow-soft px-4 sm:px-6 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between transition-colors duration-300">
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onToggleSidebar}
+          className="lg:hidden theme-toggle w-10 h-10 flex items-center justify-center"
+          aria-label="Abrir o cerrar el menú lateral"
+          aria-expanded={isSidebarOpen}
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+        <h2 className="text-2xl font-bold text-[var(--color-text)]">
+          {getSectionTitle()}
+        </h2>
+      </div>
+
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-end md:flex-1">
+        <div className="relative w-full md:max-w-xs">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-text-muted)] w-4 h-4" />
           <input
             type="text"
             placeholder={getSearchPlaceholder()}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="search-input w-full pl-10 pr-4 py-2 rounded-lg focus:outline-none"
           />
         </div>
 
-        {getActionButton()}
+        {actionButton && <div className="md:w-auto">{actionButton}</div>}
 
-        <div className="relative">
+        <div className="relative self-end md:self-auto">
           <img
             src={LogoCodezero}
             alt="Perfil"
@@ -144,22 +166,22 @@ function Header({ activeSection, searchTerm, setSearchTerm, setShowModal }) {
             onClick={toggleDropdown}
           />
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+            <div className="dropdown-panel absolute right-0 mt-2 w-48 rounded-lg z-50">
               <button
                 onClick={() => handleDropdownClick("staff")}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2"
+                className="dropdown-item w-full text-left px-4 py-2 flex items-center gap-2"
               >
                 <Users className="w-4 h-4" /> Staff
               </button>
               <button
                 onClick={() => handleDropdownClick("settings")}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2"
+                className="dropdown-item w-full text-left px-4 py-2 flex items-center gap-2"
               >
                 <Settings className="w-4 h-4" /> Configuración
               </button>
               <button
                 onClick={() => handleDropdownClick("logout")}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2 text-red-600"
+                className="dropdown-item danger w-full text-left px-4 py-2 flex items-center gap-2"
               >
                 <LogOut className="w-4 h-4" /> Cerrar sesión
               </button>
