@@ -3,6 +3,7 @@ import Hero from "./../components/sections/Hero";
 import About from "./../components/sections/About";
 import Skills from "./../components/sections/Skills";
 import Projects from "./../components/sections/Projects";
+import Pricing from "./../components/sections/Pricing";
 import Experience from "./../components/sections/Experience";
 import Laboratory from "./../components/sections/Laboratory";
 import Articles from "./../components/sections/Articles";
@@ -20,6 +21,7 @@ function Home() {
         <About />
         <Skills />
         <Projects />
+        <Pricing />
         <Experience />
         <Laboratory />
         <Articles />
