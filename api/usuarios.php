@@ -38,6 +38,16 @@ class UsuariosController {
 
     public function handleRequest() {
         $method = $_SERVER['REQUEST_METHOD'];
+
+        // Enforce Authentication
+        require_once 'auth.php';
+        try {
+            validateAuth(); // Throws 401 if invalid
+        } catch(Exception $e) {
+            $this->sendError("No autorizado", 401);
+            return;
+        }
+
         try {
             switch($method) {
                 case 'GET': $this->getUsuarios(); break;
@@ -81,45 +91,7 @@ class UsuariosController {
                 ]
             ]);
         } catch(Exception $e) {
-            // Si hay error con la BD, devolver datos de ejemplo para testing
-            $usuarios = [
-                [
-                    'id_usuario' => 1,
-                    'username' => 'admin_test',
-                    'email' => 'admin@test.com',
-                    'telefono' => '1234567890',
-                    'rol_id' => 1,
-                    'rol' => 'Administrador',
-                    'estado' => 'activo',
-                    'empresa_id' => 1,
-                    'fecha_registro' => date('Y-m-d'),
-                    'fecha_modificacion' => date('Y-m-d'),
-                    'ultimo_acceso' => null
-                ],
-                [
-                    'id_usuario' => 2,
-                    'username' => 'empleado_test',
-                    'email' => 'empleado@test.com',
-                    'telefono' => '0987654321',
-                    'rol_id' => 2,
-                    'rol' => 'Empleado',
-                    'estado' => 'activo',
-                    'empresa_id' => 1,
-                    'fecha_registro' => date('Y-m-d'),
-                    'fecha_modificacion' => date('Y-m-d'),
-                    'ultimo_acceso' => null
-                ]
-            ];
-
-            $this->sendResponse([
-                'success' => true,
-                'usuarios' => $usuarios,
-                'debug' => [
-                    'total_records' => count($usuarios),
-                    'timestamp' => date('Y-m-d H:i:s'),
-                    'note' => 'Datos de ejemplo - Error BD: ' . $e->getMessage()
-                ]
-            ]);
+             $this->sendError("Error al obtener usuarios: " . $e->getMessage(), 500);
         }
     }
 

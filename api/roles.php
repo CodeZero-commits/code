@@ -38,6 +38,16 @@ class RolesController {
 
     public function handleRequest() {
         $method = $_SERVER['REQUEST_METHOD'];
+
+        // Enforce Authentication
+        require_once 'auth.php';
+        try {
+            validateAuth();
+        } catch(Exception $e) {
+            $this->sendError("No autorizado", 401);
+            return;
+        }
+
         try {
             switch($method) {
                 case 'GET': $this->getRoles(); break;

@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import ClinicFlow from "./../../assets/images/design/Clinic-Flow-code-zero.jpg";
 import PulseMedia from "./../../assets/images/design/Pulse-Media-code-zero.jpg";
-import BarberZone from "./../../assets/images/design/Barber-Zone-code-zero.png";
+import BarberZone from "./../../assets/images/design/Barber-Zone-code-zero.PNG";
 import BlackSector from "./../../assets/images/design/Black-Sector-code-zero.PNG";
 import Odontologia from "./../../assets/images/design/Landing-page-odontologia-code-zero.jpg";
 import RealVictoria from "./../../assets/images/design/Real-Victoria-code-zero.jpg";
