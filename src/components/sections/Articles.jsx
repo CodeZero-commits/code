@@ -1,42 +1,44 @@
 import React from "react";
 import { PenSquare, ExternalLink } from "lucide-react";
-import PulseMedia from "./../../assets/images/design/Pulse-Media-code-zero.jpg";
-import RealVictoria from "./../../assets/images/design/Real-Victoria-code-zero.jpg";
-import BarberZone from "./../../assets/images/design/Barber-Zone-code-zero.png";
-import BlackSector from "./../../assets/images/design/Black-Sector-code-zero.PNG";
+import Fantasmas from "./../../assets/images/articles/001-Fantasmas-Visuales-en-tu-UI-Los-Errores-Invisibles-que-Alejan-a-tus-Usuarios-Code-Zero.png";
+import PaulRand from "./../../assets/images/articles/002-Lecciones-de-Paul-Rand-para-diseñadores-y-empresarios-Code-Zero.png";
+import DocumentarProyectos from "./../../assets/images/articles/003-Estrategias-para-documentar-proyectos-educativos-Code-Zero.png";
+import MicroInteracciones from "./../../assets/images/articles/004-Microinteracciones-que-enamoran-code-zero.png";
 
 const articles = [
   {
     id: 1,
-    title: "UX Writing para formularios con fricción",
+    title:
+      "Fantasmas Visuales en tu UI: Los Errores Invisibles que Alejan a tus Usuarios",
     summary:
-      "Guía práctica para reducir el abandono en formularios usando microcopys claros, validaciones empáticas y patrones accesibles.",
-    image: PulseMedia,
-    link: "https://medium.com",
+      "El diseño de interfaz (UI) no es solo acomodar elementos en una retícula. Es estrategia, es psicología y — cuando se hace bien — es un camino despejado para el usuario.",
+    image: Fantasmas,
+    link: "https://medium.com/@codexzero.tech/fantasmas-visuales-en-tu-ui-los-errores-invisibles-que-alejan-a-tus-usuarios-37f532618951",
   },
   {
     id: 2,
-    title: "Design Systems oscuros: coherencia y accesibilidad",
+    title:
+      "El Impacto Duradero del Diseño: Lecciones de Paul Rand que Transforman Negocios",
     summary:
-      "Cómo construir un sistema de diseño dark mode con tokens, gradientes neon y controles escalables para equipos multidisciplinares.",
-    image: BlackSector,
-    link: "https://medium.com",
+      "El diseño gráfico no es solo estética. Es estrategia, comunicación, identidad y — cuando se hace bien — una ventaja competitiva que puede cambiar la historia de una empresa.",
+    image: PaulRand,
+    link: "https://medium.com/@codexzero.tech/el-impacto-duradero-del-dise%C3%B1o-lecciones-de-paul-rand-que-transforman-negocios-3c174484c523",
   },
   {
     id: 3,
-    title: "Motion design aplicado a dashboards de datos",
+    title: "Estrategias para documentar proyectos educativos",
     summary:
-      "Principios de timing, continuidad y jerarquía visual para crear animaciones que guíen la lectura en paneles complejos.",
-    image: RealVictoria,
-    link: "https://medium.com",
+      "Documentar un proyecto educativo no es solo dejar constancia. Es construir memoria, aprendizaje y mejora continua.",
+    image: DocumentarProyectos,
+    link: "https://medium.com/@codexzero.tech/estrategias-para-documentar-proyectos-educativos-1de0d0a4bf9e",
   },
   {
     id: 4,
-    title: "UX Research Express: 5 experimentos rápidos",
+    title: "Microinteracciones que enamoran",
     summary:
-      "Plantillas de entrevistas, pruebas guerrilla y síntesis ágil para validar ideas de producto en menos de una semana.",
-    image: BarberZone,
-    link: "https://medium.com",
+      "Hay algo mágico en esos pequeños detalles que nadie nota… hasta que faltan.",
+    image: MicroInteracciones,
+    link: "https://medium.com/@codexzero.tech/microinteracciones-que-enamoran-45848c4d401c",
   },
 ];
 
@@ -61,7 +63,8 @@ const Articles = () => {
             Contenido <span className="gradient-text">Editorial</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Reflexiones, tutoriales y experiencias de UX/UI y desarrollo con foco en prácticas accionables.
+            Reflexiones, tutoriales y experiencias de UX/UI y desarrollo con
+            foco en prácticas accionables.
           </p>
         </div>
 

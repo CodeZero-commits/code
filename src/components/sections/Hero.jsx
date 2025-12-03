@@ -140,16 +140,22 @@ const Hero = () => {
               },
               {
                 icon: Linkedin,
-                href: "https://www.linkedin.com/in/code-zero-5939b8323/",
+                href: "https://www.linkedin.com/in/israel-olmec-5939b8323/",
                 Target: "_blank",
                 label: "LinkedIn",
               },
-              { icon: Mail, href: "#contact", label: "Email" },
+              { 
+                icon: Mail, 
+                href: "#contact", 
+                Target: "_self", 
+                label: "Email",
+              },
             ].map((social, index) => (
               <a
                 key={index}
                 href={social.href}
                 aria-label={social.label}
+                target= {social.Target}
                 className="group p-3 glass rounded-full hover:shadow-lg hover:scale-110 transition-all duration-300"
               >
                 <social.icon className="w-6 h-6 text-gray-300 group-hover:text-white transition-colors" />

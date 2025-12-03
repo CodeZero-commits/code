@@ -24,7 +24,15 @@ const DashboardLayout = () => {
   // Extraer la sección activa de la URL
   // Extraer la sección activa de la URL
   const getActiveSectionFromPath = (pathname) => {
-    const path = pathname.split("/").pop();
+    const parts = pathname.split("/").filter(Boolean);
+    const contentIndex = parts.indexOf("content");
+
+    if (contentIndex !== -1) {
+      const subsection = parts[contentIndex + 1] || "home";
+      return `content-${subsection}`;
+    }
+
+    const path = parts.pop();
     const sectionMap = {
       clients: "clients",
       staff: "staff",
@@ -38,6 +46,7 @@ const DashboardLayout = () => {
       social: "social",
       settings: "settings",
       ajustes: "settings",
+      whatsapp: "whatsapp",
     };
     return sectionMap[path] || "dashboard";
   };
