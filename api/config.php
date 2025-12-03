@@ -1,6 +1,13 @@
 <?php
 // api/config.php
 
+// Intentar cargar credenciales desde archivo externo seguro
+if (file_exists(__DIR__ . '/credentials.php')) {
+    require_once __DIR__ . '/credentials.php';
+}
+
+// Fallback logic handled by checking existence of config variables below.
+
 function getPDO($dbConfig) {
     try {
         $pdo = new PDO(
@@ -23,20 +30,12 @@ function getPDO($dbConfig) {
     }
 }
 
-// Ejemplo de configuraciones
-$config_crm = [
-    'host' => '193.203.166.21',
-    'dbname' => 'u449516874_codezeroCRM',
-    'username' => 'u449516874_IsraelOlmec',
-    'password' => 'IsraelOlmec123'
-];
-
-$config_ClinicFlow = [
-    'host' => '193.203.166.21',
-    'dbname' => 'u449516874_gestionClinica',
-    'username' => 'u449516874_codex',
-    'password' => 'CodexZero123'
-];
+// Check configuration existence outside the file check block
+if (!isset($config_crm) || !isset($config_ClinicFlow)) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'Configuración de base de datos no encontrada. Renombra api/credentials.example.php a api/credentials.php y configúralo.']);
+    exit;
+}
 
 // Conexión CRM
 $pdoCRM = getPDO($config_crm);

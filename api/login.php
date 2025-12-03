@@ -15,6 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 try {
     require_once 'config.php';
+    require_once 'jwt_utils.php'; // Import JWT helper
+
     if (!isset($pdoCRM)) {
         throw new Exception("Conexión no disponible");
     }
@@ -49,9 +51,19 @@ if (!password_verify($password, $user['password'])) {
     exit;
 }
 
+// Secret key for JWT (Should ideally be in config/env too, but hardcoded here as fallback/example)
+// In a real scenario, move this to credentials.php or an environment variable.
+$jwt_secret = getenv('JWT_SECRET') ?: 'ChangeMeToSomethingSecureAndLongRandomString123!';
 
-// Generar "token" sencillo (puedes usar JWT en el futuro)
-$token = base64_encode(random_bytes(24));
+// Payload for the token
+$payload = [
+    'sub' => $user['id'],
+    'username' => $user['usuario'],
+    'role' => 'admin' // Adjust as needed based on your DB schema
+];
+
+// Generate JWT with 24 hour expiration (86400 seconds)
+$token = JWT::encode($payload, $jwt_secret, 86400);
 
 echo json_encode([
     'success'=>true,
