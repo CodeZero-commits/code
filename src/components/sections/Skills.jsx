@@ -104,11 +104,11 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div>
           {/* Categorías de habilidades */}
           <div className="lg:col-span-2">
             {/* Navegación de categorías */}
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
               {Object.entries(skillCategories).map(([key, category]) => (
                 <button
                   key={key}
@@ -124,7 +124,10 @@ const Skills = () => {
                 </button>
               ))}
             </div>
+          </div>
 
+          {/* Panel lateral */}
+          <div className="space-y-6">
             {/* Skills activos */}
             <div className="glass p-8 rounded-2xl">
               <h3 className="text-2xl font-bold text-white mb-6">
@@ -159,10 +162,6 @@ const Skills = () => {
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Panel lateral */}
-          <div className="space-y-6">
             {/* Herramientas favoritas */}
             <div className="glass p-6 rounded-2xl hover-lift">
               <div className="flex items-center space-x-2 mb-4">
@@ -182,44 +181,6 @@ const Skills = () => {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Certificaciones */}
-            <div className="glass p-6 rounded-2xl hover-lift">
-              <div className="flex items-center space-x-2 mb-4">
-                <Globe className="w-6 h-6 text-green-400" />
-                <h3 className="text-xl font-bold text-white">
-                  Certificaciones
-                </h3>
-              </div>
-              <div className="space-y-3">
-                <div className="p-3 bg-gray-800/50 rounded-lg">
-                  <div className="text-white font-medium">React Developer</div>
-                  <div className="text-gray-400 text-sm">Meta - 2024</div>
-                </div>
-                <div className="p-3 bg-gray-800/50 rounded-lg">
-                  <div className="text-white font-medium">
-                    UX Design Professional
-                  </div>
-                  <div className="text-gray-400 text-sm">Google - 2023</div>
-                </div>
-                <div className="p-3 bg-gray-800/50 rounded-lg">
-                  <div className="text-white font-medium">
-                    AWS Cloud Practitioner
-                  </div>
-                  <div className="text-gray-400 text-sm">Amazon - 2023</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Experiencia resumida */}
-            <div className="glass p-6 rounded-2xl hover-lift text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">3+</div>
-              <div className="text-gray-300 text-sm">Años de experiencia</div>
-              <div className="text-4xl font-bold gradient-text mb-2 mt-4">
-                50+
-              </div>
-              <div className="text-gray-300 text-sm">Proyectos completados</div>
             </div>
           </div>
         </div>
