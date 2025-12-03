@@ -1,44 +1,6 @@
-const API_BASE = "https://codezerohub.net/api";
+import ApiClient from "./ApiClient";
 
-class UsuariosService {
-  static async request(endpoint, options = {}) {
-    const url = `${API_BASE}${endpoint}`;
-
-    try {
-      const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-          ...options.headers,
-        },
-        ...options,
-      });
-
-      const responseText = await response.text();
-      let data;
-      try {
-        data = responseText ? JSON.parse(responseText) : {};
-      } catch (jsonError) {
-        console.error("❌ JSON Parse Error:", jsonError);
-        throw new Error(
-          `Invalid JSON response: ${responseText.substring(0, 100)}...`
-        );
-      }
-
-      if (!response.ok) {
-        throw new Error(
-          `HTTP error! status: ${response.status} - ${
-            data.error || response.statusText
-          }`
-        );
-      }
-
-      return data;
-    } catch (error) {
-      console.error("💥 API Error:", error);
-      throw error;
-    }
-  }
-
+class UsuariosService extends ApiClient {
   // 🔹 CRUD Usuarios
   static async getUsuarios() {
     return this.request("/usuarios.php", { method: "GET" });

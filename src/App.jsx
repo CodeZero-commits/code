@@ -20,7 +20,7 @@ import UXUI from "./pages/pendientes/UXUI";
 import Programming from "./pages/pendientes/Programming";
 import Social from "./pages/pendientes/Social";
 import Roles from "./pages/Roles";
-import Usuarios from "./pages/usuarios";
+import Usuarios from "./pages/Usuarios";
 import ContentDashboard from "./pages/content/ContentDashboard";
 import ContentHome from "./pages/content/ContentHome";
 import ContentProjects from "./pages/content/ContentProjects";
