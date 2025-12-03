@@ -3,19 +3,29 @@ const API_BASE = import.meta.env.VITE_API_URL || "https://codezerohub.net/api";
 class ApiClient {
   static async request(endpoint, options = {}) {
     const url = `${API_BASE}${endpoint}`;
+
+    // Get token from localStorage
+    const token = localStorage.getItem("token");
+
+    const headers = {
+      "Content-Type": "application/json",
+      ...options.headers,
+    };
+
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+
     console.log("🔄 API Request:", {
       url,
       method: options.method || "GET",
-      headers: options.headers,
+      headers,
       body: options.body,
     });
 
     try {
       const response = await fetch(url, {
-        headers: {
-          "Content-Type": "application/json",
-          ...options.headers,
-        },
+        headers,
         ...options,
       });
 
