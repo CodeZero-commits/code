@@ -38,7 +38,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-top">
           {/* Texto principal */}
           <div className="space-y-6">
             <div className="glass p-8 rounded-2xl hover-lift">
@@ -63,27 +63,10 @@ const About = () => {
                 revolucionario.
               </p>
             </div>
-
-            {/* Intereses */}
-            <div className="grid md:grid-cols-3 gap-4">
-              {interests.map((interest, index) => (
-                <div
-                  key={index}
-                  className="glass p-6 rounded-xl hover-lift text-center"
-                >
-                  <interest.icon className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <h4 className="text-white font-semibold mb-2">
-                    {interest.title}
-                  </h4>
-                  <p className="text-gray-400 text-sm">{interest.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
-
           {/* Estadísticas */}
           <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 ">
               {stats.map((stat, index) => (
                 <div
                   key={index}
@@ -96,44 +79,6 @@ const About = () => {
                   <div className="text-gray-300 text-sm">{stat.label}</div>
                 </div>
               ))}
-            </div>
-
-            {/* Timeline visual */}
-            <div className="glass p-8 rounded-2xl hover-lift">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Mi Trayectoria
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex-shrink-0"></div>
-                  <div>
-                    <div className="text-white font-semibold">
-                      2024 - Presente
-                    </div>
-                    <div className="text-gray-300 text-sm">
-                      Freelancer UX/UI & Desarrollo
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-gray-400 rounded-full flex-shrink-0"></div>
-                  <div>
-                    <div className="text-white font-semibold">2022 - 2024</div>
-                    <div className="text-gray-300 text-sm">
-                      Frontend Developer en StartupX
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-gray-400 rounded-full flex-shrink-0"></div>
-                  <div>
-                    <div className="text-white font-semibold">2021 - 2022</div>
-                    <div className="text-gray-300 text-sm">
-                      Diseñador UX/UI Junior
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

@@ -1,50 +1,50 @@
 import React from "react";
 import { FlaskConical, ExternalLink, Sparkles } from "lucide-react";
-import ClinicFlow from "./../../assets/images/design/Clinic-Flow-code-zero.jpg";
-import CloudBox from "./../../assets/images/design/CloudBox-code-zero.jpg";
-import Zenith from "./../../assets/images/design/Zenith-code-zero.jpg";
-import Autoland from "./../../assets/images/design/AutoLand-code-zero.jpg";
+import LIMOS from "./../../assets/images/codepen/Captura0002.PNG";
+import ClinicFlow from "./../../assets/images/codepen/Captura001.PNG";
+import Zenith from "./../../assets/images/codepen/Captura003.PNG";
+import Autoland from "./../../assets/images/codepen/Captura004.PNG";
 
 const experiments = [
   {
     id: 1,
-    title: "Neon Pattern Generator",
+    title: "LIMOS - Luxury Transport Landing Page",
     description:
-      "Herramienta para crear patrones generativos en tiempo real con controles de color, ruido y exportación SVG.",
-    cover: CloudBox,
-    link: "#",
+      "Diseño y desarrollo de una landing page responsive para un servicio de transporte premium.",
+    cover: LIMOS,
+    link: "https://codepen.io/CodeZero-commits/pen/Byjrpoz?editors=0100",
     linkLabel: "Ver prototipo",
-    status: "En progreso",
+    status: "Beta",
   },
   {
     id: 2,
-    title: "ClinicFlow AI Console",
+    title: "NISOZ - Digital Growth Agency",
     description:
-      "Panel experimental para predecir la demanda de citas médicas usando series de tiempo y dashboards interactivos.",
+      "Landing page de alto impacto visual diseñada en Dark Mode con acentos neón.",
     cover: ClinicFlow,
-    link: "#",
-    linkLabel: "Demo interactiva",
+    link: "https://codepen.io/CodeZero-commits/pen/yyeKGpr?editors=0110",
+    linkLabel: "Ver prototipo",
     status: "Beta",
   },
   {
     id: 3,
-    title: "Zenith Motion UI",
+    title: "CarRide - Premium Rental Platform",
     description:
-      "Exploración de microinteracciones para secciones hero y cards 3D con animaciones suaves y gestos touch.",
+      "Plataforma de alquiler y venta de vehículos diseñada para transmitir confianza y rapidez.",
     cover: Zenith,
-    link: "#",
-    linkLabel: "Ver en Figma",
-    status: "Concepto",
+    link: "https://codepen.io/CodeZero-commits/pen/EaPENML",
+    linkLabel: "Ver prototipo",
+    status: "Beta",
   },
   {
     id: 4,
     title: "AutoLand XR",
     description:
-      "Experiencia inmersiva para visualizar inventario automotriz en realidad aumentada con catálogos interactivos.",
+      "Una landing page moderna y responsive diseñada para un servicio de alquiler de vehículos de alta gama.",
     cover: Autoland,
-    link: "#",
-    linkLabel: "Probar demo",
-    status: "Lab",
+    link: "https://codepen.io/CodeZero-commits/pen/Wbrzore",
+    linkLabel: "Ver prototipo",
+    status: "Beta",
   },
 ];
 

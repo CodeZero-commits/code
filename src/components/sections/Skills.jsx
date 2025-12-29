@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Code, Palette, Smartphone, Database, Globe, Zap } from "lucide-react";
+import VsCode from "./../../assets/icons/vsCode.png";
+import Figma from "./../../assets/icons/figma.png";
+import GitHub from "./../../assets/icons/github.png";
+import Notion from "./../../assets/icons/Notion.png";
+import Slack from "./../../assets/icons/Slack.png";
+import Docker from "./../../assets/icons/docker.png";
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState("frontend");
@@ -61,12 +67,12 @@ const Skills = () => {
   };
 
   const tools = [
-    { name: "VS Code", icon: "💻" },
-    { name: "Figma", icon: "🎨" },
-    { name: "Git", icon: "📚" },
-    { name: "Slack", icon: "💬" },
-    { name: "Notion", icon: "📝" },
-    { name: "Docker", icon: "🐳" },
+    { name: "VS Code", icon: VsCode },
+    { name: "Figma", icon: Figma },
+    { name: "GitHub", icon: GitHub },
+    { name: "Slack", icon: Slack },
+    { name: "Notion", icon: Notion },
+    { name: "Docker", icon: Docker },
   ];
 
   useEffect(() => {
@@ -176,7 +182,16 @@ const Skills = () => {
                     key={index}
                     className="flex items-center space-x-2 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-700/50 transition-colors"
                   >
-                    <span className="text-2xl">{tool.icon}</span>
+                    {typeof tool.icon === "string" ? (
+                      <img
+                        src={tool.icon}
+                        alt={tool.name}
+                        className="w-6 h-6"
+                      />
+                    ) : (
+                      <span className="text-2xl">{tool.icon}</span>
+                    )}
+
                     <span className="text-gray-300 text-sm">{tool.name}</span>
                   </div>
                 ))}

@@ -21,8 +21,6 @@ const Navbar = () => {
     { name: "Habilidades", href: "#skills" },
     { name: "Proyectos", href: "#projects" },
     { name: "Experiencia", href: "#experience" },
-    { name: "Laboratorio", href: "#laboratory" },
-    { name: "Artículos", href: "#articles" },
     { name: "Contacto", href: "#contact" },
   ];
 
@@ -48,6 +46,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
+
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <button
@@ -60,7 +59,7 @@ const Navbar = () => {
             </button>
           ))}
 
-          {!user ? (
+          {/*!user ? (
             <button
               onClick={() => (window.location.href = "/login")}
               className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
@@ -74,7 +73,7 @@ const Navbar = () => {
             >
               Dashboard
             </button>
-          )}
+          )*/}
         </div>
 
         {/* Mobile Menu Button */}
@@ -105,7 +104,7 @@ const Navbar = () => {
             </button>
           ))}
 
-          {!user ? (
+          {/*!user ? (
             <button
               onClick={() => (window.location.href = "/login")}
               className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-200"
@@ -119,7 +118,7 @@ const Navbar = () => {
             >
               Dashboard
             </button>
-          )}
+          )*/}
         </div>
       </div>
     </nav>

@@ -10,6 +10,7 @@ import Articles from "./../components/sections/Articles";
 import Contact from "./../components/sections/Contact";
 import Footer from "./../components/layout/Footer";
 import ScrollProgress from "./../components/ui/ScrollProgress";
+import FAQ from "../components/sections/FAQ";
 
 function Home() {
   return (
@@ -25,6 +26,7 @@ function Home() {
         <Experience />
         <Laboratory />
         <Articles />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
